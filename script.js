@@ -10,7 +10,11 @@ import {
     showError,
     clearMessage,
 } from "./modules/characterDisplay.js";
-import { getRoster, addCharacter } from "./modules/rosterApi.js";
+import {
+    getRoster,
+    addCharacter,
+    updateCharacterNote,
+} from "./modules/rosterApi.js";
 
 // grabbing the two series buttons
 const jojoButton = document.getElementById("jojo-button");
@@ -57,7 +61,7 @@ async function loadSavedRoster() {
 
     try {
         savedRoster = await getRoster();
-        displayRoster(savedRoster);
+        displayRoster(savedRoster, editRosterNote);
         clearMessage();
     } catch (error) {
         console.error("there was an issue loading the saved roster...", error);
@@ -91,11 +95,35 @@ async function addCharacterToRoster(character) {
         await addCharacter(character);
 
         savedRoster = await getRoster();
-        displayRoster(savedRoster);
+        displayRoster(savedRoster, editRosterNote);
         clearMessage();
     } catch (error) {
         console.error("there was an issue saving the character...", error);
         showError("The character could not be added to the roster.");
+    } finally {
+        disableSeriesButtons(false);
+    }
+}
+
+// sending the new note to mockapi with a put request
+// the roster gets loaded again after the note is updated
+async function editRosterNote(id, note) {
+    if (jojoButton.disabled || hunterButton.disabled) {
+        return;
+    }
+
+    disableSeriesButtons(true);
+    showLoading("Updating character note...");
+
+    try {
+        await updateCharacterNote(id, note);
+
+        savedRoster = await getRoster();
+        displayRoster(savedRoster, editRosterNote);
+        clearMessage();
+    } catch (error) {
+        console.error("there was an issue updating the character note...", error);
+        showError("The character note could not be updated.");
     } finally {
         disableSeriesButtons(false);
     }

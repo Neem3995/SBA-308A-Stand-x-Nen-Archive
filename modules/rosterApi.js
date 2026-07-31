@@ -35,3 +35,21 @@ export async function addCharacter(character) {
 
     return response.json();
 }
+
+// updating only the note for one saved character
+// the character id gets added to the end of the url
+export async function updateCharacterNote(id, note) {
+    const response = await fetch(`${rosterUrl}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ note: note }),
+    });
+
+    if (!response.ok) {
+        throw new Error("the character note could not be updated");
+    }
+
+    return response.json();
+}

@@ -70,7 +70,7 @@ export function displayCharacters(characters, series, saveCharacter) {
 
 // showing the characters that were saved in mockapi
 // this also shows a message when the roster is empty
-export function displayRoster(roster) {
+export function displayRoster(roster, editCharacterNote) {
     const rosterList = document.getElementById("roster-list");
     rosterList.innerHTML = "";
 
@@ -100,10 +100,46 @@ export function displayRoster(roster) {
         const characterNote = document.createElement("p");
         characterNote.textContent = roster[i].note || "No note added yet.";
 
+        const editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.textContent = "Edit Note";
+
+        // showing a small input under the character information
+        // the save button sends the new note back to the main file
+        editButton.addEventListener("click", function () {
+            editButton.disabled = true;
+
+            const noteInput = document.createElement("input");
+            noteInput.type = "text";
+            noteInput.classList.add("note-input");
+            noteInput.value = roster[i].note;
+            noteInput.placeholder = "Write a short note";
+
+            const saveButton = document.createElement("button");
+            saveButton.type = "button";
+            saveButton.textContent = "Save Note";
+
+            saveButton.addEventListener("click", async function () {
+                saveButton.disabled = true;
+
+                try {
+                    await editCharacterNote(roster[i].id, noteInput.value.trim());
+                } finally {
+                    saveButton.disabled = false;
+                    editButton.disabled = false;
+                }
+            });
+
+            rosterCard.appendChild(noteInput);
+            rosterCard.appendChild(saveButton);
+            noteInput.focus();
+        });
+
         rosterCard.appendChild(characterImage);
         rosterCard.appendChild(characterName);
         rosterCard.appendChild(characterSeries);
         rosterCard.appendChild(characterNote);
+        rosterCard.appendChild(editButton);
 
         rosterList.appendChild(rosterCard);
     }
