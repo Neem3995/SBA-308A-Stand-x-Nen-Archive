@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Stand x Nen Archive</title>
+
+    <script type="module" src="./script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Stand x Nen Archive</h1>
+        <p>Browse characters from JoJo's Bizarre Adventure and Hunter x Hunter.</p>
+    </header>
+
+    <main>
+        <section class="series-section">
+            <h2>Choose a Series</h2>
+            <p>Select a series and load its characters.</p>
+
+            <div class="series-buttons">
+                <button type="button" id="jojo-button" class="series-button">
+                    JoJo's Bizarre Adventure
+                </button>
+
+                <button type="button" id="hunter-button" class="series-button">
+                    Hunter x Hunter
+                </button>
+            </div>
+
+            <p id="page-message" aria-live="polite"></p>
+        </section>
+
+        <section class="character-section">
+            <h2>Character Results</h2>
+            <div id="character-list"></div>
+        </section>
+
+        <section class="roster-section">
+            <h2>Saved Character Roster</h2>
+            <div id="roster-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by Joseph Garcia for SBA 308A</p>
+    </footer>
+</body>
+
+</html>
