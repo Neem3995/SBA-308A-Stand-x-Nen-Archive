@@ -6,6 +6,15 @@ export function displayCharacters(characters, series) {
 
     characterList.innerHTML = "";
 
+    if (characters.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.classList.add("empty-message");
+        emptyMessage.textContent = "No characters were found.";
+
+        characterList.appendChild(emptyMessage);
+        return;
+    }
+
     for (let i = 0; i < characters.length && i < 12; i++) {
         const characterInfo = characters[i].character;
 
@@ -32,4 +41,33 @@ export function displayCharacters(characters, series) {
 
         characterList.appendChild(characterCard);
     }
+}
+
+// clearing old cards before another request starts
+// this also keeps old results off the page if a request fails
+export function clearCharacters() {
+    const characterList = document.getElementById("character-list");
+    characterList.innerHTML = "";
+}
+
+// showing a message while the request is running
+// the error class gets removed in case the last request failed
+export function showLoading(message) {
+    const pageMessage = document.getElementById("page-message");
+    pageMessage.classList.remove("error-message");
+    pageMessage.textContent = message;
+}
+
+// showing an error on the page instead of only using the console
+export function showError(message) {
+    const pageMessage = document.getElementById("page-message");
+    pageMessage.classList.add("error-message");
+    pageMessage.textContent = message;
+}
+
+// removing the message after everything works
+export function clearMessage() {
+    const pageMessage = document.getElementById("page-message");
+    pageMessage.classList.remove("error-message");
+    pageMessage.textContent = "";
 }

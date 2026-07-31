@@ -2,37 +2,54 @@ import {
     getJojoCharacters,
     getHunterCharacters,
 } from "./modules/animeApi.js";
-import { displayCharacters } from "./modules/characterDisplay.js";
+import {
+    displayCharacters,
+    clearCharacters,
+    showLoading,
+    showError,
+    clearMessage,
+} from "./modules/characterDisplay.js";
 
 // grabbing the two series buttons
 const jojoButton = document.getElementById("jojo-button");
 const hunterButton = document.getElementById("hunter-button");
 
-// getting the characters after the button is clicked
-// then the character data gets passed to the display function
-// loading messages and better errors will be added in another phase
-async function loadJojoCharacters() {
-    try {
-        const characters = await getJojoCharacters();
+// changing both buttons at the same time
+// disabled buttons keep another request from starting too early
+function disableSeriesButtons(disabled) {
+    jojoButton.disabled = disabled;
+    hunterButton.disabled = disabled;
+}
 
-        displayCharacters(characters, "JoJo's Bizarre Adventure");
+// getting the characters for whichever series was clicked
+// this handles the loading message, errors, and button states
+// finally turns the buttons back on even if the request fails
+async function loadCharacters(characterRequest, series) {
+    if (jojoButton.disabled || hunterButton.disabled) {
+        return;
+    }
+
+    disableSeriesButtons(true);
+    clearCharacters();
+    showLoading(`Loading ${series} characters...`);
+
+    try {
+        const characters = await characterRequest();
+
+        displayCharacters(characters, series);
+        clearMessage();
     } catch (error) {
-        console.error("there was an issue loading the jojo characters...", error);
+        console.error(`there was an issue loading ${series} characters...`, error);
+        showError("The characters could not be loaded. Please try again.");
+    } finally {
+        disableSeriesButtons(false);
     }
 }
 
-// getting the hunter x hunter characters
-// the same display function can make these cards too
-// this keeps us from writing the card code a second time
-async function loadHunterCharacters() {
-    try {
-        const characters = await getHunterCharacters();
+jojoButton.addEventListener("click", function () {
+    loadCharacters(getJojoCharacters, "JoJo's Bizarre Adventure");
+});
 
-        displayCharacters(characters, "Hunter x Hunter");
-    } catch (error) {
-        console.error("there was an issue loading the hunter characters...", error);
-    }
-}
-
-jojoButton.addEventListener("click", loadJojoCharacters);
-hunterButton.addEventListener("click", loadHunterCharacters);
+hunterButton.addEventListener("click", function () {
+    loadCharacters(getHunterCharacters, "Hunter x Hunter");
+});

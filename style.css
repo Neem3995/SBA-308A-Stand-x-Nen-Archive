@@ -98,6 +98,12 @@ h2 {
     color: #ff7b7b;
 }
 
+.empty-message {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #cccccc;
+}
+
 /* the cards will use these grids after the api is connected */
 #character-list,
 #roster-list {

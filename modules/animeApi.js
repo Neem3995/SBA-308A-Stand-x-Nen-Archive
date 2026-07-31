@@ -12,6 +12,10 @@ export async function getJojoCharacters() {
 
     const characterData = await response.json();
 
+    if (!Array.isArray(characterData.data)) {
+        throw new Error("the jojo character list was missing");
+    }
+
     return characterData.data;
 }
 
@@ -26,6 +30,10 @@ export async function getHunterCharacters() {
     }
 
     const characterData = await response.json();
+
+    if (!Array.isArray(characterData.data)) {
+        throw new Error("the hunter character list was missing");
+    }
 
     return characterData.data;
 }
