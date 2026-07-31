@@ -14,3 +14,18 @@ export async function getJojoCharacters() {
 
     return characterData.data;
 }
+
+// getting the hunter x hunter characters from the api
+// this uses the anime id for the 2011 series
+// the character list comes back in the same type of data
+export async function getHunterCharacters() {
+    const response = await fetch(`${animeApiUrl}/anime/11061/characters`);
+
+    if (!response.ok) {
+        throw new Error("the hunter request did not work");
+    }
+
+    const characterData = await response.json();
+
+    return characterData.data;
+}

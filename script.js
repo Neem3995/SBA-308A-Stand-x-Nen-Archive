@@ -1,8 +1,12 @@
-import { getJojoCharacters } from "./modules/animeApi.js";
+import {
+    getJojoCharacters,
+    getHunterCharacters,
+} from "./modules/animeApi.js";
 import { displayCharacters } from "./modules/characterDisplay.js";
 
-// grabbing the jojo button
+// grabbing the two series buttons
 const jojoButton = document.getElementById("jojo-button");
+const hunterButton = document.getElementById("hunter-button");
 
 // getting the characters after the button is clicked
 // then the character data gets passed to the display function
@@ -17,4 +21,18 @@ async function loadJojoCharacters() {
     }
 }
 
+// getting the hunter x hunter characters
+// the same display function can make these cards too
+// this keeps us from writing the card code a second time
+async function loadHunterCharacters() {
+    try {
+        const characters = await getHunterCharacters();
+
+        displayCharacters(characters, "Hunter x Hunter");
+    } catch (error) {
+        console.error("there was an issue loading the hunter characters...", error);
+    }
+}
+
 jojoButton.addEventListener("click", loadJojoCharacters);
+hunterButton.addEventListener("click", loadHunterCharacters);
