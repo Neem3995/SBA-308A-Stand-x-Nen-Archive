@@ -1,7 +1,7 @@
 // showing the characters inside the character section
 // this makes one card for each character we want to show
 // only the first 12 are used so the page does not get too crowded
-export function displayCharacters(characters, series) {
+export function displayCharacters(characters, series, saveCharacter) {
     const characterList = document.getElementById("character-list");
 
     characterList.innerHTML = "";
@@ -34,12 +34,78 @@ export function displayCharacters(characters, series) {
         const characterSeries = document.createElement("p");
         characterSeries.textContent = `Series: ${series}`;
 
+        const addButton = document.createElement("button");
+        addButton.type = "button";
+        addButton.textContent = "Add to Roster";
+
+        // putting the character information into a simple object
+        // this is the object that gets sent to mockapi
+        const savedCharacter = {
+            characterId: characterInfo.mal_id,
+            name: characterInfo.name,
+            series: series,
+            image: characterInfo.images.jpg.image_url,
+            note: "",
+        };
+
+        addButton.addEventListener("click", async function () {
+            addButton.disabled = true;
+
+            try {
+                await saveCharacter(savedCharacter);
+            } finally {
+                addButton.disabled = false;
+            }
+        });
+
         characterCard.appendChild(characterImage);
         characterCard.appendChild(characterName);
         characterCard.appendChild(characterRole);
         characterCard.appendChild(characterSeries);
+        characterCard.appendChild(addButton);
 
         characterList.appendChild(characterCard);
+    }
+}
+
+// showing the characters that were saved in mockapi
+// this also shows a message when the roster is empty
+export function displayRoster(roster) {
+    const rosterList = document.getElementById("roster-list");
+    rosterList.innerHTML = "";
+
+    if (roster.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.classList.add("empty-message");
+        emptyMessage.textContent = "Your saved roster is empty.";
+
+        rosterList.appendChild(emptyMessage);
+        return;
+    }
+
+    for (let i = 0; i < roster.length; i++) {
+        const rosterCard = document.createElement("article");
+        rosterCard.classList.add("roster-card");
+
+        const characterImage = document.createElement("img");
+        characterImage.src = roster[i].image;
+        characterImage.alt = roster[i].name;
+
+        const characterName = document.createElement("h3");
+        characterName.textContent = roster[i].name;
+
+        const characterSeries = document.createElement("p");
+        characterSeries.textContent = `Series: ${roster[i].series}`;
+
+        const characterNote = document.createElement("p");
+        characterNote.textContent = roster[i].note || "No note added yet.";
+
+        rosterCard.appendChild(characterImage);
+        rosterCard.appendChild(characterName);
+        rosterCard.appendChild(characterSeries);
+        rosterCard.appendChild(characterNote);
+
+        rosterList.appendChild(rosterCard);
     }
 }
 

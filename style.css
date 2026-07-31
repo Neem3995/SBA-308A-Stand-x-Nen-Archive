@@ -138,6 +138,11 @@ h2 {
     cursor: pointer;
 }
 
+.character-card button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 footer {
     padding: 20px;
     background-color: #191920;
