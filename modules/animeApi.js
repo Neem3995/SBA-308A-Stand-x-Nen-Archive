@@ -35,6 +35,9 @@ function matchCharacterImages(approvedCharacters, apiCharacters) {
 
     for (let i = 0; i < approvedCharacters.length; i++) {
         const localCharacter = approvedCharacters[i];
+        const sameCharacterVersions = approvedCharacters.filter(function (character) {
+            return character.apiCharacterId === localCharacter.apiCharacterId;
+        });
         const apiMatch = apiCharacters.find(function (apiCharacter) {
             const idMatches = apiCharacter.character.mal_id
                 === localCharacter.apiCharacterId;
@@ -47,7 +50,12 @@ function matchCharacterImages(approvedCharacters, apiCharacters) {
 
         const matchedCharacter = { ...localCharacter };
 
-        if (apiMatch && apiMatch.character.images.jpg.image_url) {
+        // different versions of the same person keep their part image
+        if (
+            sameCharacterVersions.length === 1
+            && apiMatch
+            && apiMatch.character.images.jpg.image_url
+        ) {
             matchedCharacter.image = apiMatch.character.images.jpg.image_url;
         }
 
