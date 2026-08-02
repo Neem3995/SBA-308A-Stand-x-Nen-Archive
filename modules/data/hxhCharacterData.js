@@ -127,7 +127,7 @@ export const hxhCharacters = [
         abilityDescription: "While using Zetsu with his eyes closed, Tserriednich instantly sees ten seconds into the future. After the vision, everyone else experiences the predicted sequence while he can change his own actions without them immediately realizing it.",
         image: "https://cdn.myanimelist.net/images/characters/12/366854.jpg",
         imageAlt: "Portrait of Tserriednich Hui Guo Rou",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/6/6b/Chap_384_-_Tserriednich%27s_aura.png",
+        abilityImage: "https://images.weserv.nl/?url=static.wikia.nocookie.net/hunterxhunter/images/0/08/Tserriednich_junto_a_su_bestia.png/revision/latest%3Fcb%3D20181015033701%26path-prefix%3Des&w=710&output=png",
     },
     {
         localId: "hxh-isaac-netero",
