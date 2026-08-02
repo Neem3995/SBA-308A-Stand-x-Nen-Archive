@@ -47,7 +47,7 @@ export const hxhCharacters = [
         abilityDescription: "Leorio sends his aura through a surface and produces a Nen fist that strikes a distant target. The technique appears connected to his medical training and may help him detect or affect objects inside the body.",
         image: "https://cdn.myanimelist.net/images/characters/11/549311.jpg",
         imageAlt: "Portrait of Leorio Paradinight",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/2/2e/A_close_up_of_Leorio_punching_Ging.png",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/7/7e/Leorio%27s_warped_punch_hits_Ging.png",
     },
     {
         localId: "hxh-killua-zoldyck",
@@ -159,7 +159,7 @@ export const hxhCharacters = [
         abilityDescription: "Meruem absorbs the aura of Nen users he consumes, permanently increasing his own power. After absorbing parts of Pouf and Youpi, he could also reproduce and improve upon aspects of their abilities.",
         image: "https://cdn.myanimelist.net/images/characters/6/243861.jpg",
         imageAlt: "Portrait of Meruem",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/c/c0/129_-_Meruem_Rage_Blast.png",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/3/37/Meruem%27s_aura_synthesis.png",
     },
     {
         localId: "hxh-neferpitou",
@@ -175,7 +175,7 @@ export const hxhCharacters = [
         abilityDescription: "Doctor Blythe performs complex surgery and heals severe injuries. Terpsichora manipulates Pitou's body like a puppet, pushing their speed and combat ability beyond normal limits.",
         image: "https://cdn.myanimelist.net/images/characters/12/253673.jpg",
         imageAlt: "Portrait of Neferpitou",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/f/fd/131_-_Terpsichora_Neferpitou.png",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/3/3f/111_-_Neferpitou_%26_Doctor_Blythe.png",
     },
     {
         localId: "hxh-komugi",
