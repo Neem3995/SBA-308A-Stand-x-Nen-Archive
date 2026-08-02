@@ -31,7 +31,7 @@ export const hxhCharacters = [
         abilityDescription: "Kurapika conjures five chains, each with a different purpose. When his Scarlet Eyes activate, Emperor Time allows him to use every Nen category at full efficiency, but it shortens his lifespan.",
         image: "https://cdn.myanimelist.net/images/characters/3/549312.jpg",
         imageAlt: "Portrait of Kurapika",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/b/ba/1999_EP45_t01.27_Kurapika_conjuring_chains.png",
+        abilityImage: "https://a-static.besthdwallpaper.com/hunter-x-hunter-kurapika-pairo-wallpaper-1080x1920-32181_165.jpg",
     },
     {
         localId: "hxh-leorio-paradinight",
