@@ -15,7 +15,7 @@ export const hxhCharacters = [
         abilityDescription: "Gon charges his aura and uses three attacks based on rock-paper-scissors. Rock is a powerful enhanced punch, Paper fires aura from a distance, and Scissors forms a cutting aura blade.",
         image: "https://cdn.myanimelist.net/images/characters/11/174517.jpg",
         imageAlt: "Portrait of Gon Freecss",
-        abilityImage: "",
+        abilityImage: "https://criticalhits.com.br/wp-content/uploads/2022/08/Gon-Jajanken.jpg",
     },
     {
         localId: "hxh-kurapika",

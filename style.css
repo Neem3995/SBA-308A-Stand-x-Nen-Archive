@@ -163,6 +163,72 @@ h2 {
     object-fit: cover;
 }
 
+/* Gon's flip card is the example for the other characters */
+.character-card.flip-card {
+    overflow: visible;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flip-card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    overflow: hidden;
+    padding: 15px;
+    background-color: #262631;
+    border: 1px solid #454556;
+    border-radius: 6px;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+}
+
+.card-back .ability-image {
+    height: 280px;
+    object-position: right;
+}
+
+.flip-message {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: rgba(16, 16, 20, 0.82);
+    color: #f2d675;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.flip-card:hover .flip-message {
+    opacity: 1;
+}
+
+.return-message {
+    color: #f2d675;
+    font-weight: bold;
+}
+
 .character-note {
     padding-top: 10px;
     border-top: 1px solid #454556;

@@ -88,7 +88,7 @@ function createCharacterCard(character, cardClass) {
     abilityDescription.textContent = character.abilityDescription;
     characterCard.appendChild(abilityDescription);
 
-    if (character.abilityImage) {
+    if (character.abilityImage && cardClass === "character-card") {
         const abilityImage = document.createElement("img");
         abilityImage.classList.add("ability-image");
         abilityImage.src = character.abilityImage;
@@ -97,6 +97,70 @@ function createCharacterCard(character, cardClass) {
     }
 
     return characterCard;
+}
+
+// making Gon's card flip for the first example
+// the front keeps his normal character information
+// the back shows Gon using Jajanken
+function addGonFlip(characterCard, character) {
+    if (character.localId !== "hxh-gon-freecss") {
+        return;
+    }
+
+    const abilityImage = characterCard.querySelector(".ability-image");
+
+    if (abilityImage) {
+        abilityImage.remove();
+    }
+
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("card-front");
+
+    while (characterCard.firstChild) {
+        cardFront.appendChild(characterCard.firstChild);
+    }
+
+    const flipMessage = document.createElement("p");
+    flipMessage.classList.add("flip-message");
+    flipMessage.textContent = "flip to see ability";
+    cardFront.appendChild(flipMessage);
+
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("card-back");
+
+    if (abilityImage) {
+        cardBack.appendChild(abilityImage);
+    }
+
+    const abilityName = document.createElement("h3");
+    abilityName.textContent = character.abilityName;
+
+    const abilityDescription = document.createElement("p");
+    abilityDescription.textContent = character.abilityDescription;
+
+    const returnMessage = document.createElement("p");
+    returnMessage.classList.add("return-message");
+    returnMessage.textContent = "click to return";
+
+    cardBack.appendChild(abilityName);
+    cardBack.appendChild(abilityDescription);
+    cardBack.appendChild(returnMessage);
+
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card-inner");
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+
+    characterCard.classList.add("flip-card");
+    characterCard.appendChild(cardInner);
+
+    characterCard.addEventListener("click", function (event) {
+        if (event.target.tagName === "BUTTON") {
+            return;
+        }
+
+        characterCard.classList.toggle("is-flipped");
+    });
 }
 
 // showing only the approved characters inside the results section
@@ -148,6 +212,7 @@ export function displayCharacters(characters, saveCharacter) {
         });
 
         characterCard.appendChild(addButton);
+        addGonFlip(characterCard, character);
         characterList.appendChild(characterCard);
     }
 }
