@@ -163,7 +163,7 @@ h2 {
     object-fit: cover;
 }
 
-/* Gon's flip card is the example for the other characters */
+/* flip cards for the hunter x hunter characters */
 .character-card.flip-card {
     overflow: visible;
     padding: 0;
@@ -196,11 +196,16 @@ h2 {
 .card-back {
     position: absolute;
     inset: 0;
+    overflow-y: auto;
     transform: rotateY(180deg);
 }
 
 .card-back .ability-image {
     height: 280px;
+    object-position: center;
+}
+
+[data-local-id="hxh-gon-freecss"] .card-back .ability-image {
     object-position: right;
 }
 

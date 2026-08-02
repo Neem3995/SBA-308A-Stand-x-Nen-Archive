@@ -99,11 +99,11 @@ function createCharacterCard(character, cardClass) {
     return characterCard;
 }
 
-// making Gon's card flip for the first example
-// the front keeps his normal character information
-// the back shows Gon using Jajanken
-function addGonFlip(characterCard, character) {
-    if (character.localId !== "hxh-gon-freecss") {
+// making the hunter cards flip to show their abilities
+// the front keeps the normal character information
+// the back shows the character using their ability
+function addHunterFlip(characterCard, character) {
+    if (character.series !== "Hunter × Hunter" || !character.abilityImage) {
         return;
     }
 
@@ -212,7 +212,7 @@ export function displayCharacters(characters, saveCharacter) {
         });
 
         characterCard.appendChild(addButton);
-        addGonFlip(characterCard, character);
+        addHunterFlip(characterCard, character);
         characterList.appendChild(characterCard);
     }
 }

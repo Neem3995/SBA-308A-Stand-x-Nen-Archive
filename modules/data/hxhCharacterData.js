@@ -31,7 +31,7 @@ export const hxhCharacters = [
         abilityDescription: "Kurapika conjures five chains, each with a different purpose. When his Scarlet Eyes activate, Emperor Time allows him to use every Nen category at full efficiency, but it shortens his lifespan.",
         image: "https://cdn.myanimelist.net/images/characters/3/549312.jpg",
         imageAlt: "Portrait of Kurapika",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/b/ba/1999_EP45_t01.27_Kurapika_conjuring_chains.png",
     },
     {
         localId: "hxh-leorio-paradinight",
@@ -47,7 +47,7 @@ export const hxhCharacters = [
         abilityDescription: "Leorio sends his aura through a surface and produces a Nen fist that strikes a distant target. The technique appears connected to his medical training and may help him detect or affect objects inside the body.",
         image: "https://cdn.myanimelist.net/images/characters/11/549311.jpg",
         imageAlt: "Portrait of Leorio Paradinight",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/2/2e/A_close_up_of_Leorio_punching_Ging.png",
     },
     {
         localId: "hxh-killua-zoldyck",
@@ -63,7 +63,7 @@ export const hxhCharacters = [
         abilityDescription: "Killua transmutes his aura into electricity. Godspeed uses Whirlwind to react automatically to threats and Speed of Lightning to let him consciously move at extreme speed.",
         image: "https://cdn.myanimelist.net/images/characters/2/327920.jpg",
         imageAlt: "Portrait of Killua Zoldyck",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/5/59/119_-_Killua_Godspeed.png",
     },
     {
         localId: "hxh-melody",
@@ -79,7 +79,7 @@ export const hxhCharacters = [
         abilityDescription: "Melody sends her aura through music to calm listeners, ease fatigue, and influence their emotional state. During a full performance, she can entrance everyone who hears her for several minutes.",
         image: "https://cdn.myanimelist.net/images/characters/7/146977.jpg",
         imageAlt: "Portrait of Melody",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/7/78/Chap_383_-_Melody%27s_performance.png",
     },
     {
         localId: "hxh-kite",
@@ -95,7 +95,7 @@ export const hxhCharacters = [
         abilityDescription: "Kite conjures one of nine possible weapons through a clown-shaped roulette. The weapon is chosen randomly, and Kite must use it before he can make it disappear.",
         image: "https://cdn.myanimelist.net/images/characters/5/203429.jpg",
         imageAlt: "Portrait of Kite",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/2/20/Kite%27s_Scythe_-_Episode_83.png",
     },
     {
         localId: "hxh-ging-freecss",
@@ -111,7 +111,7 @@ export const hxhCharacters = [
         abilityDescription: "Ging can imitate striking-based Nen techniques after being hit by them. He copied Leorio's remote punch and quickly developed additional ways to apply the technique, but Ging states that this is a natural talent rather than his true Nen ability.",
         image: "https://cdn.myanimelist.net/images/characters/2/231795.jpg",
         imageAlt: "Portrait of Ging Freecss",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/4/4d/Chap_347_-_Ging_imitating_Leorio%27s_ability.png",
     },
     {
         localId: "hxh-tserriednich-hui-guo-rou",
@@ -127,7 +127,7 @@ export const hxhCharacters = [
         abilityDescription: "While using Zetsu with his eyes closed, Tserriednich instantly sees ten seconds into the future. After the vision, everyone else experiences the predicted sequence while he can change his own actions without them immediately realizing it.",
         image: "https://cdn.myanimelist.net/images/characters/12/366854.jpg",
         imageAlt: "Portrait of Tserriednich Hui Guo Rou",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/6/6b/Chap_384_-_Tserriednich%27s_aura.png",
     },
     {
         localId: "hxh-isaac-netero",
@@ -143,7 +143,7 @@ export const hxhCharacters = [
         abilityDescription: "Netero performs an incredibly fast prayer to summon a massive multi-armed Nen construct. Its hands deliver powerful attacks in different patterns, while Zero Hand releases nearly all of his remaining aura as a final blast.",
         image: "https://cdn.myanimelist.net/images/characters/7/257355.jpg",
         imageAlt: "Portrait of Isaac Netero",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/2/27/Netero%27s_Guanyin_Bodhisattva.png",
     },
     {
         localId: "hxh-meruem",
@@ -159,7 +159,7 @@ export const hxhCharacters = [
         abilityDescription: "Meruem absorbs the aura of Nen users he consumes, permanently increasing his own power. After absorbing parts of Pouf and Youpi, he could also reproduce and improve upon aspects of their abilities.",
         image: "https://cdn.myanimelist.net/images/characters/6/243861.jpg",
         imageAlt: "Portrait of Meruem",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/c/c0/129_-_Meruem_Rage_Blast.png",
     },
     {
         localId: "hxh-neferpitou",
@@ -175,7 +175,7 @@ export const hxhCharacters = [
         abilityDescription: "Doctor Blythe performs complex surgery and heals severe injuries. Terpsichora manipulates Pitou's body like a puppet, pushing their speed and combat ability beyond normal limits.",
         image: "https://cdn.myanimelist.net/images/characters/12/253673.jpg",
         imageAlt: "Portrait of Neferpitou",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/f/fd/131_-_Terpsichora_Neferpitou.png",
     },
     {
         localId: "hxh-komugi",
@@ -191,7 +191,7 @@ export const hxhCharacters = [
         abilityDescription: "Komugi unconsciously uses Nen to enhance her talent for Gungi. Her skill continuously evolves during each match, allowing her to create new strategies and remain undefeated even against Meruem.",
         image: "https://cdn.myanimelist.net/images/characters/14/243865.jpg",
         imageAlt: "Portrait of Komugi",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/7/77/Komugi_Gungi_Skill.png",
     },
     {
         localId: "hxh-shaiapouf",
@@ -207,6 +207,6 @@ export const hxhCharacters = [
         abilityDescription: "Spiritual Message spreads hypnotic scales that allow Pouf to analyze a person's emotions and mental state. Beelzebub lets him divide his body into countless miniature clones for scouting, escape, and deception.",
         image: "https://cdn.myanimelist.net/images/characters/3/563303.jpg",
         imageAlt: "Portrait of Shaiapouf",
-        abilityImage: "",
+        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/d/d8/125_-_Shaiapouf_Beelzebub.png",
     },
 ];
