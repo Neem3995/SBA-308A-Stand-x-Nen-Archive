@@ -99,11 +99,11 @@ function createCharacterCard(character, cardClass) {
     return characterCard;
 }
 
-// making the hunter cards flip to show their abilities
+// making the ability cards flip to show their powers
 // the front keeps the normal character information
 // the back shows the character using their ability
-function addHunterFlip(characterCard, character) {
-    if (character.series !== "Hunter × Hunter" || !character.abilityImage) {
+function addAbilityFlip(characterCard, character) {
+    if (!character.abilityImage) {
         return;
     }
 
@@ -212,7 +212,7 @@ export function displayCharacters(characters, saveCharacter) {
         });
 
         characterCard.appendChild(addButton);
-        addHunterFlip(characterCard, character);
+        addAbilityFlip(characterCard, character);
         characterList.appendChild(characterCard);
     }
 }

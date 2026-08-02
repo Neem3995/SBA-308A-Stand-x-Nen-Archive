@@ -163,7 +163,7 @@ h2 {
     object-fit: cover;
 }
 
-/* flip cards for the hunter x hunter characters */
+/* flip cards for characters with ability images */
 .character-card.flip-card {
     overflow: visible;
     padding: 0;

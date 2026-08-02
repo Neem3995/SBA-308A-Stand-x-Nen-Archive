@@ -47,7 +47,7 @@ export const jojoCharacters = [
         abilityDescription: "The World is a powerful close-range Stand with exceptional strength and speed. Its main ability allows DIO to stop time for several seconds, letting him move and attack while everyone else remains frozen.",
         image: "https://cdn.myanimelist.net/images/characters/13/328191.jpg",
         imageAlt: "DIO during Stardust Crusaders",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/7/7e/latest/20221004175724/The_World_Infobox_Anime.png",
     },
     {
         localId: "jojo-dio-part-6",
@@ -63,7 +63,7 @@ export const jojoCharacters = [
         abilityDescription: "The World is DIO's powerful close-range Stand and can stop time for several seconds. Although DIO is already dead during Stone Ocean, his teachings and plan to attain Heaven guide Enrico Pucci's actions.",
         image: "https://cdn.myanimelist.net/images/characters/3/606751.jpg",
         imageAlt: "DIO as remembered during Stone Ocean",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/e/e0/latest/20221115212447/The_World_SO_Infobox_Manga.png",
     },
     {
         localId: "jojo-diego-part-7",
@@ -79,7 +79,7 @@ export const jojoCharacters = [
         abilityDescription: "Scary Monsters allows Diego to transform himself into a dinosaur or a human-dinosaur hybrid, greatly increasing his speed, strength, senses, and agility. He can also infect other living creatures, transform them into dinosaurs, and control them.",
         image: "https://cdn.myanimelist.net/images/characters/8/328089.jpg",
         imageAlt: "Portrait of Diego Brando from Steel Ball Run",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/1/14/latest/20241023050843/Scary_Monsters_Infobox_Manga.png",
     },
     {
         localId: "jojo-alternate-diego-part-7",
@@ -95,7 +95,7 @@ export const jojoCharacters = [
         abilityDescription: "THE WORLD is a powerful close-range Stand that can stop time for up to five seconds. Diego uses the frozen time to reposition himself, avoid attacks, and create traps before his opponents can react.",
         image: "https://cdn.myanimelist.net/images/characters/15/462879.jpg",
         imageAlt: "Portrait of Alternate World Diego Brando",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/8/8a/latest/20220924001200/THE_WORLD_Infobox_Manga.PNG",
     },
     {
         localId: "jojo-jotaro-part-3",
@@ -111,7 +111,7 @@ export const jojoCharacters = [
         abilityDescription: "Star Platinum is a close-range Stand with overwhelming strength, speed, precision, and sharp senses. During Jotaro's final battle with DIO, it awakens the ability to briefly stop time.",
         image: "https://cdn.myanimelist.net/images/characters/9/312302.jpg",
         imageAlt: "Jotaro Kujo during Stardust Crusaders",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/c/ca/latest/20200927002609/Star_Platinum_SC_Infobox_Anime.png",
     },
     {
         localId: "jojo-joseph-part-3",
@@ -127,7 +127,7 @@ export const jojoCharacters = [
         abilityDescription: "Hermit Purple takes the form of thorn-covered vines that Joseph uses to restrain targets, swing between locations, and gather information through spirit photography. He can also channel Hamon through the vines during combat.",
         image: "https://cdn.myanimelist.net/images/characters/3/319682.jpg",
         imageAlt: "Joseph Joestar during Stardust Crusaders",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/4/43/latest/20210715112349/HP_first_appearance.png",
     },
     {
         localId: "jojo-muhammad-avdol-part-3",
@@ -143,7 +143,7 @@ export const jojoCharacters = [
         abilityDescription: "Magician's Red creates and controls intense flames that Avdol can shape into powerful attacks. Its signature Crossfire Hurricane launches flaming, ankh-shaped projectiles at opponents.",
         image: "https://cdn.myanimelist.net/images/characters/16/325462.jpg",
         imageAlt: "Portrait of Muhammad Avdol",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/4/48/latest/20220916201225/Magician%27s_Red_Infobox_Anime.png",
     },
     {
         localId: "jojo-noriaki-kakyoin-part-3",
@@ -159,7 +159,7 @@ export const jojoCharacters = [
         abilityDescription: "Hierophant Green is a long-range Stand that can unravel its body into tentacle-like strings for scouting, trapping, and attacking from a distance. Its signature Emerald Splash fires a rapid barrage of concentrated emerald-shaped energy.",
         image: "https://cdn.myanimelist.net/images/characters/13/345565.jpg",
         imageAlt: "Portrait of Noriaki Kakyoin",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/3/3e/latest/20210616200106/Hierophant_Green_Infobox_Anime.png",
     },
     {
         localId: "jojo-jean-pierre-polnareff-part-3",
@@ -175,7 +175,7 @@ export const jojoCharacters = [
         abilityDescription: "Silver Chariot is a fast close-range Stand that fights with a rapier using precise thrusts and rapid sword attacks. It can remove its armor to gain even greater speed, but this leaves it more vulnerable.",
         image: "https://cdn.myanimelist.net/images/characters/10/245195.jpg",
         imageAlt: "Portrait of Jean Pierre Polnareff",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/0/09/latest/20221019190021/Silver_Chariot_SC_Infobox_Anime.png",
     },
     {
         localId: "jojo-iggy-part-3",
@@ -191,7 +191,7 @@ export const jojoCharacters = [
         abilityDescription: "The Fool is a Stand made from sand that Iggy can reshape at will. He uses it to create shields, disguises, glider-like wings, and powerful forms for attacking or escaping.",
         image: "https://cdn.myanimelist.net/images/characters/2/133145.jpg",
         imageAlt: "Portrait of Iggy from Stardust Crusaders",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/1/10/latest/20210312225357/The_Fool_Infobox_Anime.png",
     },
     {
         localId: "jojo-giorno-part-5",
@@ -207,7 +207,7 @@ export const jojoCharacters = [
         abilityDescription: "Gold Experience gives life to objects, allowing Giorno to create plants, animals, and replacement body parts. After evolving into Gold Experience Requiem, it can return an opponent's actions and willpower to zero, preventing them from reaching their intended result.",
         image: "https://cdn.myanimelist.net/images/characters/16/571466.jpg",
         imageAlt: "Portrait of Giorno Giovanna",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/2/2d/latest/20200706004824/GER_anime_full_body.png",
     },
     {
         localId: "jojo-bruno-bucciarati-part-5",
@@ -223,7 +223,7 @@ export const jojoCharacters = [
         abilityDescription: "Sticky Fingers creates zippers on anything it touches. Bucciarati can open surfaces, separate body parts without causing immediate harm, create hidden passages, extend his attacks, and quickly reattach objects or people.",
         image: "https://cdn.myanimelist.net/images/characters/6/558883.jpg",
         imageAlt: "Portrait of Bruno Bucciarati",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/7/78/latest/20221006032155/Sticky_Fingers_Infobox_Anime.png",
     },
     {
         localId: "jojo-guido-mista-part-5",
@@ -239,7 +239,7 @@ export const jojoCharacters = [
         abilityDescription: "Sex Pistols consists of six small Stands that ride on Mista's bullets and kick them to change their direction. This allows him to curve shots around obstacles, attack from unexpected angles, and redirect bullets during combat.",
         image: "https://cdn.myanimelist.net/images/characters/12/380304.jpg",
         imageAlt: "Portrait of Guido Mista",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/a/a0/latest/20200424085210/Chara_mista_stand.png",
     },
     {
         localId: "jojo-narancia-ghirga-part-5",
@@ -255,7 +255,7 @@ export const jojoCharacters = [
         abilityDescription: "Aerosmith is a miniature fighter-plane Stand armed with machine guns and a bomb. Its radar detects carbon dioxide from breathing, allowing Narancia to locate and attack targets even when he cannot see them directly.",
         image: "https://cdn.myanimelist.net/images/characters/14/361190.jpg",
         imageAlt: "Portrait of Narancia Ghirga",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/b/be/latest/20191015215954/AerosmithAttackingFormaggio.jpg",
     },
     {
         localId: "jojo-leone-abbacchio-part-5",
@@ -271,7 +271,7 @@ export const jojoCharacters = [
         abilityDescription: "Moody Blues can replay the past actions of a person or events that occurred at a location. Abbacchio can pause, rewind, and fast-forward the replay to investigate clues, although the Stand is vulnerable while the ability is active.",
         image: "https://cdn.myanimelist.net/images/characters/10/614904.jpg",
         imageAlt: "Portrait of Leone Abbacchio",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/9/91/latest/20220916205647/Moody_Blues_Infobox_Anime.png",
     },
     {
         localId: "jojo-pannacotta-fugo-part-5",
@@ -287,7 +287,7 @@ export const jojoCharacters = [
         abilityDescription: "Purple Haze releases a deadly flesh-eating virus from capsules on its fists. The virus attacks living organisms extremely quickly and is dangerous to both enemies and allies, making the Stand difficult for Fugo to control safely.",
         image: "https://cdn.myanimelist.net/images/characters/2/599931.jpg",
         imageAlt: "Portrait of Pannacotta Fugo",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/c/ca/latest/20191015214140/Purple_Haze_Infobox_Anime.png",
     },
     {
         localId: "jojo-trish-una-part-5",
@@ -303,7 +303,7 @@ export const jojoCharacters = [
         abilityDescription: "Spice Girl can soften objects and give them rubber-like elasticity without making them weaker. Trish uses this ability to absorb impacts, create flexible surfaces, and redirect attacks.",
         image: "https://cdn.myanimelist.net/images/characters/11/496774.jpg",
         imageAlt: "Portrait of Trish Una",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/b/b3/latest/20191015213328/Spice_Girl_anime.png",
     },
     {
         localId: "jojo-diavolo-part-5",
@@ -319,7 +319,7 @@ export const jojoCharacters = [
         abilityDescription: "Epitaph allows Diavolo to see several seconds into the future. King Crimson can then erase up to roughly ten seconds of time, allowing Diavolo to avoid the predicted danger and reposition himself before time resumes.",
         image: "https://cdn.myanimelist.net/images/characters/12/496775.jpg",
         imageAlt: "Portrait of Diavolo",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/c/c6/latest/20241012182526/King_Crimson_Infobox_Anime.png",
     },
     {
         localId: "jojo-yoshikage-kira-part-4",
@@ -335,7 +335,7 @@ export const jojoCharacters = [
         abilityDescription: "Killer Queen turns anything it touches into a bomb and can destroy victims without leaving evidence. Its secondary bomb, Sheer Heart Attack, automatically follows heat, while Bites the Dust kills anyone who discovers Kira's identity and rewinds time by about one hour.",
         image: "https://cdn.myanimelist.net/images/characters/13/241133.jpg",
         imageAlt: "Portrait of Yoshikage Kira from Diamond Is Unbreakable",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/1/14/latest/20221020232023/Killer_Queen_Infobox_Anime.png",
     },
     {
         localId: "jojo-josuke-part-8",
@@ -351,7 +351,7 @@ export const jojoCharacters = [
         abilityDescription: "Soft & Wet creates soap bubbles that can steal and carry properties or objects. Go Beyond produces an invisible explosive bubble that effectively does not exist in the world, allowing it to pass through barriers and bypass the law of calamity.",
         image: "https://cdn.myanimelist.net/images/characters/11/436398.jpg",
         imageAlt: "Portrait of Josuke Higashikata from JoJolion",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/5/55/latest/20220801101811/Soft_%26_Wet_Infobox_Manga.png",
     },
     {
         localId: "jojo-tooru-part-8",
@@ -367,7 +367,7 @@ export const jojoCharacters = [
         abilityDescription: "Wonder of U is an automatic long-range Stand that brings calamity upon anyone who pursues Tooru or the Stand itself. Ordinary objects and events become unnaturally dangerous, while the Stand disguises itself as hospital director Satoru Akefu.",
         image: "https://cdn.myanimelist.net/images/characters/8/443609.jpg",
         imageAlt: "Portrait of Tooru from JoJolion",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/2/24/latest/20210418202241/Wonder_of_U_Hybrid_Infobox_Manga.png",
     },
     {
         localId: "jojo-jodio-part-9",
@@ -383,6 +383,6 @@ export const jojoCharacters = [
         abilityDescription: "November Rain creates a localized rain shower with selectively heavy droplets. Jodio can make the rain powerful enough to pierce, pin down, or crush targets beneath its concentrated weight.",
         image: "https://cdn.myanimelist.net/images/characters/4/503493.jpg",
         imageAlt: "Portrait of Jodio Joestar from The JOJOLands",
-        abilityImage: "",
+        abilityImage: "https://static.jojowiki.com/images/b/bf/latest/20231223005916/November_Rain_Infobox_Manga.png",
     },
 ];
