@@ -15,6 +15,7 @@ import {
     addCharacter,
     updateCharacterNote,
 } from "./modules/rosterApi.js";
+import { allCharacters } from "./modules/data/characterData.js";
 
 // grabbing the two series buttons
 const jojoButton = document.getElementById("jojo-button");
@@ -43,7 +44,7 @@ async function loadCharacters(characterRequest, series) {
     try {
         const characters = await characterRequest();
 
-        displayCharacters(characters, series, addCharacterToRoster);
+        displayCharacters(characters, addCharacterToRoster);
         clearMessage();
     } catch (error) {
         console.error(`there was an issue loading ${series} characters...`, error);
@@ -53,6 +54,46 @@ async function loadCharacters(characterRequest, series) {
     }
 }
 
+// matching old and new roster records to the approved local list
+// unapproved saved records do not get displayed in the final app
+function getApprovedRoster(roster) {
+    const approvedRoster = [];
+
+    for (let i = 0; i < roster.length; i++) {
+        const savedCharacter = roster[i];
+        const approvedCharacter = allCharacters.find(function (character) {
+            if (savedCharacter.localId) {
+                return character.localId === savedCharacter.localId;
+            }
+
+            const savedSeries = (savedCharacter.series || "").replace("×", "x");
+
+            return character.apiCharacterId === savedCharacter.characterId
+                && character.series.replace("×", "x") === savedSeries;
+        });
+
+        if (approvedCharacter) {
+            const alreadyAdded = approvedRoster.some(function (character) {
+                return character.localId === approvedCharacter.localId;
+            });
+
+            if (alreadyAdded) {
+                continue;
+            }
+
+            const rosterCharacter = {
+                ...approvedCharacter,
+                id: savedCharacter.id,
+                note: savedCharacter.note || "",
+            };
+
+            approvedRoster.push(rosterCharacter);
+        }
+    }
+
+    return approvedRoster;
+}
+
 // loading the saved roster when the page first opens
 // the same function runs again after somebody gets added
 async function loadSavedRoster() {
@@ -60,7 +101,8 @@ async function loadSavedRoster() {
     showLoading("Loading saved roster...");
 
     try {
-        savedRoster = await getRoster();
+        const roster = await getRoster();
+        savedRoster = getApprovedRoster(roster);
         displayRoster(savedRoster, editRosterNote);
         clearMessage();
     } catch (error) {
@@ -75,8 +117,7 @@ async function loadSavedRoster() {
 // then the roster gets reloaded so the new card shows up
 async function addCharacterToRoster(character) {
     const alreadySaved = savedRoster.some(function (savedCharacter) {
-        return savedCharacter.characterId === character.characterId
-            && savedCharacter.series === character.series;
+        return savedCharacter.localId === character.localId;
     });
 
     if (alreadySaved) {
@@ -94,7 +135,8 @@ async function addCharacterToRoster(character) {
     try {
         await addCharacter(character);
 
-        savedRoster = await getRoster();
+        const roster = await getRoster();
+        savedRoster = getApprovedRoster(roster);
         displayRoster(savedRoster, editRosterNote);
         clearMessage();
     } catch (error) {
@@ -118,7 +160,8 @@ async function editRosterNote(id, note) {
     try {
         await updateCharacterNote(id, note);
 
-        savedRoster = await getRoster();
+        const roster = await getRoster();
+        savedRoster = getApprovedRoster(roster);
         displayRoster(savedRoster, editRosterNote);
         clearMessage();
     } catch (error) {
@@ -134,7 +177,7 @@ jojoButton.addEventListener("click", function () {
 });
 
 hunterButton.addEventListener("click", function () {
-    loadCharacters(getHunterCharacters, "Hunter x Hunter");
+    loadCharacters(getHunterCharacters, "Hunter × Hunter");
 });
 
 loadSavedRoster();

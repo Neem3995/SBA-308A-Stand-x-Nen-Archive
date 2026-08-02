@@ -1,9 +1,107 @@
-// showing the characters inside the character section
-// this makes one card for each character we want to show
-// only the first 12 are used so the page does not get too crowded
-export function displayCharacters(characters, series, saveCharacter) {
-    const characterList = document.getElementById("character-list");
+// changing the ability label for each type of character
+function getAbilityLabel(character) {
+    if (character.abilityType === "Nen") {
+        return "Nen Ability";
+    }
 
+    if (character.abilityType === "Stand") {
+        return "Stand";
+    }
+
+    if (character.abilityType === "Hamon") {
+        return "Hamon";
+    }
+
+    if (character.abilityType === "Vampirism") {
+        return "Vampiric Ability";
+    }
+
+    return "Ability";
+}
+
+// making one reusable card for main results and saved characters
+// this keeps all of the approved information in the same order
+function createCharacterCard(character, cardClass) {
+    const characterCard = document.createElement("article");
+    characterCard.classList.add(cardClass);
+    characterCard.dataset.localId = character.localId;
+
+    const portraitArea = document.createElement("div");
+    portraitArea.classList.add("portrait-area");
+
+    const imageFallback = document.createElement("div");
+    imageFallback.classList.add("image-fallback");
+    imageFallback.textContent = "Portrait unavailable";
+
+    if (character.image) {
+        const characterImage = document.createElement("img");
+        characterImage.src = character.image;
+        characterImage.alt = character.imageAlt
+            || `Portrait of ${character.name}`;
+
+        characterImage.addEventListener("error", function () {
+            characterImage.remove();
+            imageFallback.classList.add("show-fallback");
+        });
+
+        portraitArea.appendChild(characterImage);
+    } else {
+        imageFallback.classList.add("show-fallback");
+    }
+
+    portraitArea.appendChild(imageFallback);
+    characterCard.appendChild(portraitArea);
+
+    const characterName = document.createElement("h3");
+    characterName.textContent = character.name;
+    characterCard.appendChild(characterName);
+
+    const characterSeries = document.createElement("p");
+    characterSeries.textContent = `Series: ${character.series}`;
+    characterCard.appendChild(characterSeries);
+
+    if (character.partOrArc) {
+        const characterPart = document.createElement("p");
+        characterPart.classList.add("character-part");
+        characterPart.textContent = character.partOrArc;
+        characterCard.appendChild(characterPart);
+    }
+
+    const characterRole = document.createElement("p");
+    characterRole.textContent = `Role: ${character.role}`;
+    characterCard.appendChild(characterRole);
+
+    if (character.nenType) {
+        const nenType = document.createElement("p");
+        nenType.classList.add("nen-type");
+        nenType.textContent = `Nen Type: ${character.nenType}`;
+        characterCard.appendChild(nenType);
+    }
+
+    const characterAbility = document.createElement("p");
+    characterAbility.classList.add("ability-name");
+    characterAbility.textContent = `${getAbilityLabel(character)}: ${character.abilityName}`;
+    characterCard.appendChild(characterAbility);
+
+    const abilityDescription = document.createElement("p");
+    abilityDescription.classList.add("ability-description");
+    abilityDescription.textContent = character.abilityDescription;
+    characterCard.appendChild(abilityDescription);
+
+    if (character.abilityImage) {
+        const abilityImage = document.createElement("img");
+        abilityImage.classList.add("ability-image");
+        abilityImage.src = character.abilityImage;
+        abilityImage.alt = `${character.name} using ${character.abilityName}`;
+        characterCard.appendChild(abilityImage);
+    }
+
+    return characterCard;
+}
+
+// showing only the approved characters inside the results section
+export function displayCharacters(characters, saveCharacter) {
+    const characterList = document.getElementById("character-list");
     characterList.innerHTML = "";
 
     if (characters.length === 0) {
@@ -15,36 +113,27 @@ export function displayCharacters(characters, series, saveCharacter) {
         return;
     }
 
-    for (let i = 0; i < characters.length && i < 12; i++) {
-        const characterInfo = characters[i].character;
-
-        const characterCard = document.createElement("article");
-        characterCard.classList.add("character-card");
-
-        const characterImage = document.createElement("img");
-        characterImage.src = characterInfo.images.jpg.image_url;
-        characterImage.alt = characterInfo.name;
-
-        const characterName = document.createElement("h3");
-        characterName.textContent = characterInfo.name;
-
-        const characterRole = document.createElement("p");
-        characterRole.textContent = `Role: ${characters[i].role}`;
-
-        const characterSeries = document.createElement("p");
-        characterSeries.textContent = `Series: ${series}`;
-
+    for (let i = 0; i < characters.length; i++) {
+        const character = characters[i];
+        const characterCard = createCharacterCard(character, "character-card");
         const addButton = document.createElement("button");
         addButton.type = "button";
         addButton.textContent = "Add to Roster";
 
-        // putting the character information into a simple object
-        // this is the object that gets sent to mockapi
+        // building the final object that gets sent to mockapi
         const savedCharacter = {
-            characterId: characterInfo.mal_id,
-            name: characterInfo.name,
-            series: series,
-            image: characterInfo.images.jpg.image_url,
+            localId: character.localId,
+            apiCharacterId: character.apiCharacterId,
+            name: character.name,
+            series: character.series,
+            partOrArc: character.partOrArc || "",
+            image: character.image,
+            abilityImage: character.abilityImage || "",
+            role: character.role,
+            abilityType: character.abilityType,
+            nenType: character.nenType || "",
+            abilityName: character.abilityName,
+            abilityDescription: character.abilityDescription,
             note: "",
         };
 
@@ -58,12 +147,7 @@ export function displayCharacters(characters, series, saveCharacter) {
             }
         });
 
-        characterCard.appendChild(characterImage);
-        characterCard.appendChild(characterName);
-        characterCard.appendChild(characterRole);
-        characterCard.appendChild(characterSeries);
         characterCard.appendChild(addButton);
-
         characterList.appendChild(characterCard);
     }
 }
@@ -84,21 +168,13 @@ export function displayRoster(roster, editCharacterNote) {
     }
 
     for (let i = 0; i < roster.length; i++) {
-        const rosterCard = document.createElement("article");
-        rosterCard.classList.add("roster-card");
-
-        const characterImage = document.createElement("img");
-        characterImage.src = roster[i].image;
-        characterImage.alt = roster[i].name;
-
-        const characterName = document.createElement("h3");
-        characterName.textContent = roster[i].name;
-
-        const characterSeries = document.createElement("p");
-        characterSeries.textContent = `Series: ${roster[i].series}`;
+        const rosterCard = createCharacterCard(roster[i], "roster-card");
 
         const characterNote = document.createElement("p");
-        characterNote.textContent = roster[i].note || "No note added yet.";
+        characterNote.classList.add("character-note");
+        characterNote.textContent = roster[i].note
+            ? `Personal Note: ${roster[i].note}`
+            : "Personal Note: No note added yet.";
 
         const editButton = document.createElement("button");
         editButton.type = "button";
@@ -135,9 +211,6 @@ export function displayRoster(roster, editCharacterNote) {
             noteInput.focus();
         });
 
-        rosterCard.appendChild(characterImage);
-        rosterCard.appendChild(characterName);
-        rosterCard.appendChild(characterSeries);
         rosterCard.appendChild(characterNote);
         rosterCard.appendChild(editButton);
 

@@ -1,39 +1,86 @@
+import {
+    hxhCharacters,
+    jojoCharacters,
+} from "./data/characterData.js";
+
 const animeApiUrl = "https://api.jikan.moe/v4";
 
-// getting the jojo characters from the api
-// this uses the anime id for the first jojo tv series
-// then it returns the character list inside the data
-export async function getJojoCharacters() {
-    const response = await fetch(`${animeApiUrl}/anime/14719/characters`);
+// getting one anime character list from jikan
+// a failed list returns empty so the verified local portraits still work
+async function getAnimeCharacterList(animeId) {
+    try {
+        const response = await fetch(`${animeApiUrl}/anime/${animeId}/characters`);
 
-    if (!response.ok) {
-        throw new Error("the jojo request did not work");
+        if (!response.ok) {
+            return [];
+        }
+
+        const characterData = await response.json();
+
+        if (!Array.isArray(characterData.data)) {
+            return [];
+        }
+
+        return characterData.data;
+    } catch (error) {
+        console.error("there was an issue getting an anime character list...", error);
+        return [];
     }
-
-    const characterData = await response.json();
-
-    if (!Array.isArray(characterData.data)) {
-        throw new Error("the jojo character list was missing");
-    }
-
-    return characterData.data;
 }
 
-// getting the hunter x hunter characters from the api
-// this uses the anime id for the 2011 series
-// the character list comes back in the same type of data
+// matching the api image to the approved local character
+// both the verified api id and an approved search name must match
+function matchCharacterImages(approvedCharacters, apiCharacters) {
+    const matchedCharacters = [];
+
+    for (let i = 0; i < approvedCharacters.length; i++) {
+        const localCharacter = approvedCharacters[i];
+        const apiMatch = apiCharacters.find(function (apiCharacter) {
+            const idMatches = apiCharacter.character.mal_id
+                === localCharacter.apiCharacterId;
+            const nameMatches = localCharacter.searchNames.includes(
+                apiCharacter.character.name,
+            );
+
+            return idMatches && nameMatches;
+        });
+
+        const matchedCharacter = { ...localCharacter };
+
+        if (apiMatch && apiMatch.character.images.jpg.image_url) {
+            matchedCharacter.image = apiMatch.character.images.jpg.image_url;
+        }
+
+        matchedCharacters.push(matchedCharacter);
+    }
+
+    return matchedCharacters;
+}
+
+// only showing the characters that made the final jojo list
+// several anime ids are used because the records come from different parts
+export async function getJojoCharacters() {
+    const jojoAnimeIds = [14719, 20899, 31933, 37991, 48661];
+    const requests = [];
+
+    for (let i = 0; i < jojoAnimeIds.length; i++) {
+        requests.push(getAnimeCharacterList(jojoAnimeIds[i]));
+    }
+
+    const characterLists = await Promise.all(requests);
+    let apiCharacters = [];
+
+    for (let i = 0; i < characterLists.length; i++) {
+        apiCharacters = apiCharacters.concat(characterLists[i]);
+    }
+
+    return matchCharacterImages(jojoCharacters, apiCharacters);
+}
+
+// only showing the characters that made the final hxh list
+// manga-only characters keep their verified local portrait
 export async function getHunterCharacters() {
-    const response = await fetch(`${animeApiUrl}/anime/11061/characters`);
+    const apiCharacters = await getAnimeCharacterList(11061);
 
-    if (!response.ok) {
-        throw new Error("the hunter request did not work");
-    }
-
-    const characterData = await response.json();
-
-    if (!Array.isArray(characterData.data)) {
-        throw new Error("the hunter character list was missing");
-    }
-
-    return characterData.data;
+    return matchCharacterImages(hxhCharacters, apiCharacters);
 }
