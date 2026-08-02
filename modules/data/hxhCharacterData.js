@@ -47,7 +47,7 @@ export const hxhCharacters = [
         abilityDescription: "Leorio sends his aura through a surface and produces a Nen fist that strikes a distant target. The technique appears connected to his medical training and may help him detect or affect objects inside the body.",
         image: "https://cdn.myanimelist.net/images/characters/11/549311.jpg",
         imageAlt: "Portrait of Leorio Paradinight",
-        abilityImage: "https://static.wikia.nocookie.net/hunterxhunter/images/7/7e/Leorio%27s_warped_punch_hits_Ging.png",
+        abilityImage: "https://criticalhits.com.br/wp-content/uploads/2022/12/Leorio-Emissao-910x512.jpg",
     },
     {
         localId: "hxh-killua-zoldyck",
