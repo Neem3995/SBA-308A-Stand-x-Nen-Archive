@@ -71,7 +71,21 @@ modules/
 
 ## Reflection
 
-This project helped me practice organizing JavaScript into modules, matching API data to a local list, working with async requests, and updating the page after saved data changes.
+### What could you have done differently during the planning stages of your project to make the execution easier?
+
+I could have decided on my final character list and image sources earlier. I changed some of the characters and images after the API features were already working. Planning those details first would have made the later updates faster.
+
+### Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
+
+Matching Jikan results to the correct character versions and keeping the API requests from overlapping were the most difficult parts. Testing each endpoint before building the cards and completing one request at a time would make this easier in another project.
+
+### What would you add to, or change about your application if given more time?
+
+I would add a simple Delete from Roster button and a basic character filter. I would also keep adjusting a few image positions so every portrait and ability image fits its card as smoothly as possible.
+
+### Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again.
+
+I should always check the API documentation and returned property names before writing the display code. Keeping the API functions, character data, and page display in separate modules made the project easier to understand. Testing and committing after every small phase also made it easier to find and fix problems.
 
 ## Technologies Used
 
