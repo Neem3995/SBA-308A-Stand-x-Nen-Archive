@@ -1,5 +1,8 @@
 // final hxh characters
 // these are the only hunter x hunter records shown in the app
+// local id keeps each saved character unique inside mockapi
+// api id and search names are used to find the matching jikan image
+// ability image is used on the back of the flip card
 export const hxhCharacters = [
     {
         localId: "hxh-gon-freecss",

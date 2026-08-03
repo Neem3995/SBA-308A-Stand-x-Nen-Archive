@@ -20,6 +20,10 @@ import { allCharacters } from "./modules/data/characterData.js";
 // grabbing the two series buttons
 const jojoButton = document.getElementById("jojo-button");
 const hunterButton = document.getElementById("hunter-button");
+
+// keeping a copy of the roster in the main file
+// this lets me check if somebody is already saved
+// before another post request gets sent
 let savedRoster = [];
 
 // changing both buttons at the same time
@@ -59,6 +63,9 @@ async function loadCharacters(characterRequest, series) {
 function getApprovedRoster(roster) {
     const approvedRoster = [];
 
+    // checking every mockapi record against my final character data
+    // older records used the api id instead of the new local id
+    // this keeps both kinds of saved records working
     for (let i = 0; i < roster.length; i++) {
         const savedCharacter = roster[i];
         const approvedCharacter = allCharacters.find(function (character) {
@@ -66,6 +73,7 @@ function getApprovedRoster(roster) {
                 return character.localId === savedCharacter.localId;
             }
 
+            // changing the older series symbol so the names can still match
             const savedSeries = (savedCharacter.series || "").replace("×", "x");
 
             return character.apiCharacterId === savedCharacter.characterId
@@ -73,6 +81,8 @@ function getApprovedRoster(roster) {
         });
 
         if (approvedCharacter) {
+            // some characters have more than one version in the app
+            // local id makes sure the exact version only gets added once
             const alreadyAdded = approvedRoster.some(function (character) {
                 return character.localId === approvedCharacter.localId;
             });
@@ -87,6 +97,7 @@ function getApprovedRoster(roster) {
                 note: savedCharacter.note || "",
             };
 
+            // using my approved character details with the saved id and note
             approvedRoster.push(rosterCharacter);
         }
     }
@@ -101,6 +112,8 @@ async function loadSavedRoster() {
     showLoading("Loading saved roster...");
 
     try {
+        // getting the records first and then filtering the old data
+        // only approved characters get passed to the display function
         const roster = await getRoster();
         savedRoster = getApprovedRoster(roster);
         displayRoster(savedRoster, editRosterNote);
@@ -133,6 +146,8 @@ async function addCharacterToRoster(character) {
     showLoading(`Saving ${character.name}...`);
 
     try {
+        // waiting for the post request before getting the new roster
+        // this keeps the page from reloading the list too early
         await addCharacter(character);
 
         const roster = await getRoster();
@@ -158,6 +173,8 @@ async function editRosterNote(id, note) {
     showLoading("Updating character note...");
 
     try {
+        // waiting for mockapi to finish changing the note
+        // then getting the roster again so the new note appears
         await updateCharacterNote(id, note);
 
         const roster = await getRoster();
@@ -172,6 +189,8 @@ async function editRosterNote(id, note) {
     }
 }
 
+// each button sends its own request function into loadCharacters
+// the shared function handles the loading and error steps for both
 jojoButton.addEventListener("click", function () {
     loadCharacters(getJojoCharacters, "JoJo's Bizarre Adventure");
 });

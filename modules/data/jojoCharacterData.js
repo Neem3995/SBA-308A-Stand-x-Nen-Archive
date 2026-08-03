@@ -1,5 +1,8 @@
 // final jojo characters
 // the different versions stay separate with their own local ids
+// api id and search names connect the approved characters to jikan
+// part information keeps each version matched to the right ability
+// ability image is left empty when that version does not use a stand
 export const jojoCharacters = [
     {
         localId: "jojo-joseph-part-2",

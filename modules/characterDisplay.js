@@ -1,4 +1,6 @@
 // changing the ability label for each type of character
+// the same card function can show nen, stands, hamon, or vampire powers
+// this keeps me from making a separate card for every series
 function getAbilityLabel(character) {
     if (character.abilityType === "Nen") {
         return "Nen Ability";
@@ -22,10 +24,13 @@ function getAbilityLabel(character) {
 // making one reusable card for main results and saved characters
 // this keeps all of the approved information in the same order
 function createCharacterCard(character, cardClass) {
+    // article is used for both the search results and saved roster cards
+    // cardClass gives each section the css style it needs
     const characterCard = document.createElement("article");
     characterCard.classList.add(cardClass);
     characterCard.dataset.localId = character.localId;
 
+    // making a separate portrait area for the image or fallback message
     const portraitArea = document.createElement("div");
     portraitArea.classList.add("portrait-area");
 
@@ -34,12 +39,15 @@ function createCharacterCard(character, cardClass) {
     imageFallback.textContent = "Portrait unavailable";
 
     if (character.image) {
+        // using the approved alt text when it exists
+        // otherwise the character name still gives the image a description
         const characterImage = document.createElement("img");
         characterImage.src = character.image;
         characterImage.alt = character.imageAlt
             || `Portrait of ${character.name}`;
 
         characterImage.addEventListener("error", function () {
+            // removing a broken image and showing a message in its place
             characterImage.remove();
             imageFallback.classList.add("show-fallback");
         });
@@ -61,6 +69,7 @@ function createCharacterCard(character, cardClass) {
     characterCard.appendChild(characterSeries);
 
     if (character.partOrArc) {
+        // jojo uses a part and hunter x hunter uses an arc when needed
         const characterPart = document.createElement("p");
         characterPart.classList.add("character-part");
         characterPart.textContent = character.partOrArc;
@@ -72,6 +81,7 @@ function createCharacterCard(character, cardClass) {
     characterCard.appendChild(characterRole);
 
     if (character.nenType) {
+        // nen type only gets added to hunter x hunter characters
         const nenType = document.createElement("p");
         nenType.classList.add("nen-type");
         nenType.textContent = `Nen Type: ${character.nenType}`;
@@ -89,6 +99,8 @@ function createCharacterCard(character, cardClass) {
     characterCard.appendChild(abilityDescription);
 
     if (character.abilityImage && cardClass === "character-card") {
+        // ability images only go on the main results because those cards flip
+        // saved roster cards stay simple and show the written information
         const abilityImage = document.createElement("img");
         abilityImage.classList.add("ability-image");
         abilityImage.src = character.abilityImage;
@@ -104,9 +116,11 @@ function createCharacterCard(character, cardClass) {
 // the back shows the character using their ability
 function addAbilityFlip(characterCard, character) {
     if (!character.abilityImage) {
+        // characters without a stand or nen image keep the normal card
         return;
     }
 
+    // grabbing the image before the rest of the card gets moved around
     const abilityImage = characterCard.querySelector(".ability-image");
 
     if (abilityImage) {
@@ -116,6 +130,7 @@ function addAbilityFlip(characterCard, character) {
     const cardFront = document.createElement("div");
     cardFront.classList.add("card-front");
 
+    // moving the normal character information onto the front side
     while (characterCard.firstChild) {
         cardFront.appendChild(characterCard.firstChild);
     }
@@ -128,6 +143,7 @@ function addAbilityFlip(characterCard, character) {
     const cardBack = document.createElement("div");
     cardBack.classList.add("card-back");
 
+    // placing the ability image and explanation on the back side
     if (abilityImage) {
         cardBack.appendChild(abilityImage);
     }
@@ -151,10 +167,12 @@ function addAbilityFlip(characterCard, character) {
     cardInner.appendChild(cardFront);
     cardInner.appendChild(cardBack);
 
+    // card-inner rotates while the outside card stays in the grid
     characterCard.classList.add("flip-card");
     characterCard.appendChild(cardInner);
 
     characterCard.addEventListener("click", function (event) {
+        // clicking the roster button should not also flip the whole card
         if (event.target.tagName === "BUTTON") {
             return;
         }
@@ -166,6 +184,8 @@ function addAbilityFlip(characterCard, character) {
 // showing only the approved characters inside the results section
 export function displayCharacters(characters, saveCharacter) {
     const characterList = document.getElementById("character-list");
+
+    // clearing the old series before building the new character cards
     characterList.innerHTML = "";
 
     if (characters.length === 0) {
@@ -177,6 +197,7 @@ export function displayCharacters(characters, saveCharacter) {
         return;
     }
 
+    // creating one card and one save button for every approved character
     for (let i = 0; i < characters.length; i++) {
         const character = characters[i];
         const characterCard = createCharacterCard(character, "character-card");
@@ -202,6 +223,7 @@ export function displayCharacters(characters, saveCharacter) {
         };
 
         addButton.addEventListener("click", async function () {
+            // disabling this button keeps the same card from posting twice
             addButton.disabled = true;
 
             try {
@@ -221,6 +243,8 @@ export function displayCharacters(characters, saveCharacter) {
 // this also shows a message when the roster is empty
 export function displayRoster(roster, editCharacterNote) {
     const rosterList = document.getElementById("roster-list");
+
+    // rebuilding the roster keeps added characters and notes up to date
     rosterList.innerHTML = "";
 
     if (roster.length === 0) {
@@ -232,6 +256,7 @@ export function displayRoster(roster, editCharacterNote) {
         return;
     }
 
+    // making one saved card for every approved mockapi record
     for (let i = 0; i < roster.length; i++) {
         const rosterCard = createCharacterCard(roster[i], "roster-card");
 
@@ -248,6 +273,7 @@ export function displayRoster(roster, editCharacterNote) {
         // showing a small input under the character information
         // the save button sends the new note back to the main file
         editButton.addEventListener("click", function () {
+            // keeping the edit button off while its note input is open
             editButton.disabled = true;
 
             const noteInput = document.createElement("input");
@@ -261,6 +287,7 @@ export function displayRoster(roster, editCharacterNote) {
             saveButton.textContent = "Save Note";
 
             saveButton.addEventListener("click", async function () {
+                // waiting for the update before letting another save happen
                 saveButton.disabled = true;
 
                 try {
