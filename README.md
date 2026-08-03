@@ -10,16 +10,18 @@ The application lets users browse an approved list of characters from JoJo's Biz
 - 24 approved JoJo character versions
 - Character portraits matched with verified Jikan/MyAnimeList IDs
 - Stand, Hamon, Vampiric, and Nen ability information
+- Clickable ability cards that flip to show Stand and Nen images
 - GET requests for character information and the saved roster
 - POST requests to save characters
 - PUT requests to update personal notes
 - Loading, error, empty, and duplicate messages
+- Disabled series buttons while requests are loading
 - Responsive character card layout
 
 ## APIs Used
 
-- Jikan API for external anime character data and portraits
-- MockAPI for the saved character roster and note updates
+- [Jikan API](https://jikan.moe/) for external anime character data and portraits
+- [MockAPI](https://mockapi.io/) for the saved character roster and note updates
 
 ## File Structure
 
@@ -43,6 +45,18 @@ modules/
 2. Start a local server such as Live Server.
 3. Open `index.html` through the local server.
 4. Choose a series to load its approved characters.
+5. Click an ability card to flip it and see the character's ability image.
+
+## Testing
+
+- JoJo's Bizarre Adventure loads 24 approved character cards
+- Hunter × Hunter loads 13 approved character cards
+- All character portraits and ability images load without errors
+- Ability cards flip forward and back when clicked
+- Characters can be added to the saved roster
+- Personal notes can be updated and reloaded
+- Series buttons are disabled while a request is loading
+- Browser console has no warnings or errors
 
 ## SBA Requirements Completed
 
@@ -52,6 +66,7 @@ modules/
 - Promises and async/await
 - Multiple JavaScript modules with imports and exports
 - User interaction, loading states, and error handling
+- Overlapping series requests prevented with disabled buttons
 - Approved API results rendered in reusable cards
 
 ## Reflection
